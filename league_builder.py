@@ -47,21 +47,18 @@ def num_of_beginner_player(beginner_player):
     return beg_num_per_team
 
 
-def team_Sharks(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team):
-    Sharks = experienced_player[:exp_num_per_team] + beginner_player[:beg_num_per_team]
-    return Sharks
-
-
-def team_Dragons(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team):
-    Dragons = experienced_player[exp_num_per_team:(
-        exp_num_per_team*2)] + beginner_player[beg_num_per_team:(beg_num_per_team*2)]
-    return Dragons
-
-
-def team_Raptors(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team):
-    Raptors = experienced_player[-1:(exp_num_per_team*2-1):-1] + \
-        beginner_player[-1:(beg_num_per_team*2-1):-1]
-    return Raptors
+def create_team(team, experienced_player, beginner_player, beg_num_per_team, exp_num_per_team):
+    if team == "Sharks":
+        team = experienced_player[:exp_num_per_team] + beginner_player[:beg_num_per_team]
+        return team
+    elif team == "Dragons":
+        team = experienced_player[exp_num_per_team:(
+            exp_num_per_team*2)] + beginner_player[beg_num_per_team:(beg_num_per_team*2)]
+        return team
+    elif team == "Raptors":
+        team = experienced_player[-1:(exp_num_per_team*2-1):-1] + \
+            beginner_player[-1:(beg_num_per_team*2-1):-1]
+        return team
 
 
 def write_info(team, title):
@@ -86,9 +83,12 @@ def create_soccer_league():
     experienced_player = sort_experienced_player(player_info)
     beg_num_per_team = num_of_beginner_player(beginner_player)
     exp_num_per_team = num_of_experienced_player(experienced_player)
-    Sharks = team_Sharks(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team)
-    Dragons = team_Dragons(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team)
-    Raptors = team_Raptors(experienced_player, beginner_player, beg_num_per_team, exp_num_per_team)
+    Sharks = create_team("Sharks", experienced_player,
+                         beginner_player, beg_num_per_team, exp_num_per_team)
+    Dragons = create_team("Dragons", experienced_player,
+                          beginner_player, beg_num_per_team, exp_num_per_team)
+    Raptors = create_team("Raptors", experienced_player,
+                          beginner_player, beg_num_per_team, exp_num_per_team)
     add_team_info(Sharks, Dragons, Raptors)
 
 
