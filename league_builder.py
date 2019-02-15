@@ -53,20 +53,13 @@ def create_team(team, experienced_player, beginner_player):
         return team
 
 
-def write_info(team, title):
+def write_team_info(team, title):
     with open("teams.txt", "a") as file:
         file.write("Team " + title + "\n")
         for player_name, player_height, player_experience in team:
             # write info to file
             file.write(player_name + ", " + player_height + ", " + player_experience + "\n")
         file.write("\n")
-
-
-def add_team_info(Sharks, Dragons, Raptors):
-    with open("teams.txt", "w") as file:
-        write_info(Sharks, "Sharks")
-        write_info(Dragons, "Dragons")
-        write_info(Raptors, "Raptors")
 
 
 def create_soccer_league():
@@ -76,7 +69,10 @@ def create_soccer_league():
     Sharks = create_team("Sharks", experienced_player, beginner_player)
     Dragons = create_team("Dragons", experienced_player, beginner_player)
     Raptors = create_team("Raptors", experienced_player, beginner_player)
-    add_team_info(Sharks, Dragons, Raptors)
+    with open("teams.txt", "w") as file:
+        write_team_info(Sharks, "Sharks")
+        write_team_info(Dragons, "Dragons")
+        write_team_info(Raptors, "Raptors")
 
 
 if __name__ == "__main__":
