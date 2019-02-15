@@ -19,22 +19,21 @@ def player_info_list():
     return player_info
 
 
-def sort_experienced_player(player_info):
-    experienced_player = []
-    for player in player_info:
-        for experience in player:
-            if experience == "YES":
-                experienced_player.append(player)
-    return experienced_player
-
-
-def sort_beginner_player(player_info):
-    beginner_player = []
-    for player in player_info:
-        for experience in player:
-            if experience == "NO":
-                beginner_player.append(player)
-    return beginner_player
+def sort_player_by_experience(player_info, type_of_player):
+    if type_of_player == "experienced":
+        experienced_player = []
+        for player in player_info:
+            for experience in player:
+                if experience == "YES":
+                    experienced_player.append(player)
+        return experienced_player
+    elif type_of_player == "beginner":
+        beginner_player = []
+        for player in player_info:
+            for experience in player:
+                if experience == "NO":
+                    beginner_player.append(player)
+        return beginner_player
 
 
 def num_of_experienced_player(experienced_player):
@@ -79,8 +78,8 @@ def add_team_info(Sharks, Dragons, Raptors):
 
 def create_soccer_league():
     player_info = player_info_list()
-    beginner_player = sort_beginner_player(player_info)
-    experienced_player = sort_experienced_player(player_info)
+    beginner_player = sort_player_by_experience(player_info, "beginner")
+    experienced_player = sort_player_by_experience(player_info, "experienced")
     beg_num_per_team = num_of_beginner_player(beginner_player)
     exp_num_per_team = num_of_experienced_player(experienced_player)
     Sharks = create_team("Sharks", experienced_player,
