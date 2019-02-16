@@ -56,9 +56,9 @@ def create_team(team, experienced_player, beginner_player):
 def write_team_info(team, title):
     with open("teams.txt", "a") as file:
         file.write("Team " + title + "\n")
-        for player_name, player_height, player_experience in team:
+        for player_name, player_experience, player_guardian in team:
             # write info to file
-            file.write(player_name + ", " + player_height + ", " + player_experience + "\n")
+            file.write(player_name + ", " + player_experience + ", " + player_guardian + "\n")
         file.write("\n")
 
 
