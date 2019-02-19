@@ -54,13 +54,15 @@ def create_teams(teams, experienced_players, beginner_players):
 
 
 def write_team_info(team_dict):
-    # This function writes the teams.txt file with the three teams and a list of all the players
-    for key in team_dict.keys():
-        with open("teams.txt", "a") as file:
-            file.write("Team {}".format(key) + "\n")
-            for player_name, player_experience, player_guardian in team_dict[key]:
-                file.write(player_name + ", " + player_experience + ", " + player_guardian + "\n")
-            file.write("\n")
+    with open("teams.txt", "w") as file:
+        # This function writes the teams.txt file with the three teams and a list of all the players
+        for key in team_dict.keys():
+            with open("teams.txt", "a") as file:
+                file.write("Team {}".format(key) + "\n")
+                for player_name, player_experience, player_guardian in team_dict[key]:
+                    file.write(player_name + ", " + player_experience +
+                               ", " + player_guardian + "\n")
+                file.write("\n")
 
 
 def write_welcome_letter(team_dict):
@@ -70,7 +72,7 @@ def write_welcome_letter(team_dict):
             players = player_name.lower().replace(" ", "_")
             with open(players + ".txt", "w") as file:
                 file.write("Dear " + player_guardian + ",\n\n" + "We would like to welcome " +
-                           player_name + " to the {} team.\n".format(key) +
+                           player_name + " to the {} team\n".format(key) +
                            "The first practice is May 25th, 2019 at 2:00pm.")
 
 
@@ -80,8 +82,7 @@ def create_soccer_league():
     experienced_players = sort_players_by_experience(player_info, "experienced")
     teams = ["Sharks", "Dragons", "Raptors"]
     team_dict = create_teams(teams, experienced_players, beginner_players)
-    with open("teams.txt", "w") as file:
-        write_team_info(team_dict)
+    write_team_info(team_dict)
     write_welcome_letter(team_dict)
 
 
