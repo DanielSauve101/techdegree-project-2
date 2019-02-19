@@ -3,6 +3,9 @@ import random
 
 
 def player_info_list():
+    # This function opens the soccer_players.csv file and seperates the player
+    # information into three lists. Then orders the list by using zip and returns
+    # the list of player_info.
     player_name = []
     player_experience = []
     guardian = []
@@ -21,6 +24,8 @@ def player_info_list():
 
 
 def sort_players_by_experience(player_info, type_of_player):
+    # This function is to sort the players into to lists. experienced_players
+    # and beginner_players and return the list accordingly.
     experienced_players = []
     beginner_players = []
 
@@ -38,6 +43,9 @@ def sort_players_by_experience(player_info, type_of_player):
 
 
 def create_teams(teams, experienced_players, beginner_players):
+    # This function is used to generate random players from both beginner_players
+    # and experienced_players lists. Which then seperates then into equal teams
+    # as a dictionary using the team as the key and list of equal players as the value.
     number_of_teams = len(teams)
     team_dict = {}
 
@@ -65,7 +73,7 @@ def write_team_info(team_dict):
 
 
 def write_welcome_letter(team_dict):
-    # Below is the code for writing a welcome text file for each player
+    # This function is for writing a welcome text file for each player
     for key in team_dict.keys():
         for player_name, player_experience, player_guardian in team_dict[key]:
             players = player_name.lower().replace(" ", "_")
@@ -76,6 +84,7 @@ def write_welcome_letter(team_dict):
 
 
 def create_soccer_league():
+    # This function creates the soccer league and creates all the files.
     player_info = player_info_list()
     beginner_players = sort_players_by_experience(player_info, "beginner")
     experienced_players = sort_players_by_experience(player_info, "experienced")
