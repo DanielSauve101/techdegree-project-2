@@ -55,14 +55,13 @@ def create_teams(teams, experienced_players, beginner_players):
 
 def write_team_info(team_dict):
     # This function writes the teams.txt file with the three teams and a list of all the players
-    with open("teams.txt", "w") as file:
+    with open("teams.txt", "w") as f:
         for key in team_dict.keys():
-            with open("teams.txt", "a") as file:
-                file.write("Team {}".format(key) + "\n")
-                for player_name, player_experience, player_guardian in team_dict[key]:
-                    file.write(player_name + ", " + player_experience +
-                               ", " + player_guardian + "\n")
-                file.write("\n")
+            f.write("Team {}".format(key) + "\n")
+            for player_name, player_experience, player_guardian in team_dict[key]:
+                f.write(player_name + ", " + player_experience +
+                        ", " + player_guardian + "\n")
+            f.write("\n")
 
 
 def write_welcome_letter(team_dict):
@@ -70,10 +69,10 @@ def write_welcome_letter(team_dict):
     for key in team_dict.keys():
         for player_name, player_experience, player_guardian in team_dict[key]:
             players = player_name.lower().replace(" ", "_")
-            with open(players + ".txt", "w") as file:
-                file.write("Dear " + player_guardian + ",\n\n" + "We would like to welcome " +
-                           player_name + " to the {} team\n".format(key) +
-                           "The first practice is May 25th, 2019 at 2:00pm.")
+            with open(players + ".txt", "w") as f:
+                f.write("Dear " + player_guardian + ",\n\n" + "We would like to welcome " +
+                        player_name + " to the {} team\n".format(key) +
+                        "The first practice is May 25th, 2019 at 2:00pm.")
 
 
 def create_soccer_league():
