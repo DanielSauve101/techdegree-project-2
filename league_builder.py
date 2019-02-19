@@ -54,8 +54,8 @@ def create_teams(teams, experienced_players, beginner_players):
 
 
 def write_team_info(team_dict):
+    # This function writes the teams.txt file with the three teams and a list of all the players
     with open("teams.txt", "w") as file:
-        # This function writes the teams.txt file with the three teams and a list of all the players
         for key in team_dict.keys():
             with open("teams.txt", "a") as file:
                 file.write("Team {}".format(key) + "\n")
