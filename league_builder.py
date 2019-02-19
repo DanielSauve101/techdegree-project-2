@@ -1,4 +1,5 @@
 import csv
+import random
 
 
 def player_info_list():
@@ -36,50 +37,52 @@ def sort_players_by_experience(player_info, type_of_player):
         return beginner_players
 
 
-def create_team(team, experienced_players, beginner_players):
-    exp_num_per_team = int(len(experienced_players) / 3)
-    beg_num_per_team = int(len(beginner_players) / 3)
+def create_teams(teams, experienced_players, beginner_players):
+    number_of_teams = len(teams)
+    team_dict = {}
 
-    if team == "team_one":
-        team = experienced_players[:exp_num_per_team] + beginner_players[:beg_num_per_team]
-        return team
-    elif team == "team_two":
-        team = experienced_players[exp_num_per_team:(
-            exp_num_per_team*2)] + beginner_players[beg_num_per_team:(beg_num_per_team*2)]
-        return team
-    elif team == "team_three":
-        team = experienced_players[-1:(exp_num_per_team*2-1):-1] + \
-            beginner_players[-1:(beg_num_per_team*2-1):-1]
-        return team
+    for team in teams:
+        list_of_random_players = random.sample(
+            experienced_players, number_of_teams) + random.sample(beginner_players, number_of_teams)
+        team_dict.update({team: list_of_random_players})
+        for player in list_of_random_players:
+            if player in experienced_players:
+                experienced_players.remove(player)
+            elif player in beginner_players:
+                beginner_players.remove(player)
+    return team_dict
 
 
-def write_team_info(team, title):
-    with open("teams.txt", "a") as file:
-        file.write("Team " + title + "\n")
-        for player_name, player_experience, player_guardian in team:
-            # write info to file
-            file.write(player_name + ", " + player_experience + ", " + player_guardian + "\n")
-        file.write("\n")
+def write_team_info(team_dict):
+    # This function writes the teams.txt file with the three teams and a list of all the players
+    for key in team_dict.keys():
+        with open("teams.txt", "a") as file:
+            file.write("Team {}".format(key) + "\n")
+            for player_name, player_experience, player_guardian in team_dict[key]:
+                file.write(player_name + ", " + player_experience + ", " + player_guardian + "\n")
+            file.write("\n")
 
-    for player_name, player_experience, player_guardian in team:
-        players = player_name.lower().replace(" ", "_")
-        with open(players + ".txt", "w") as file:
-            file.write("Dear " + player_guardian + ",\n\n" + "We would like to welcome " +
-                       player_name + " to the " + title + " team." +
-                       "\nThe first practice is May 25th, 2019 at 2:00pm.")
+
+def write_welcome_letter(team_dict):
+    # Below is the code for writing a welcome text file for each player
+    for key in team_dict.keys():
+        for player_name, player_experience, player_guardian in team_dict[key]:
+            players = player_name.lower().replace(" ", "_")
+            with open(players + ".txt", "w") as file:
+                file.write("Dear " + player_guardian + ",\n\n" + "We would like to welcome " +
+                           player_name + " to the {} team.\n".format(key) +
+                           "The first practice is May 25th, 2019 at 2:00pm.")
 
 
 def create_soccer_league():
     player_info = player_info_list()
     beginner_players = sort_players_by_experience(player_info, "beginner")
     experienced_players = sort_players_by_experience(player_info, "experienced")
-    Sharks = create_team("team_one", experienced_players, beginner_players)
-    Dragons = create_team("team_two", experienced_players, beginner_players)
-    Raptors = create_team("team_three", experienced_players, beginner_players)
+    teams = ["Sharks", "Dragons", "Raptors"]
+    team_dict = create_teams(teams, experienced_players, beginner_players)
     with open("teams.txt", "w") as file:
-        write_team_info(Sharks, "Sharks")
-        write_team_info(Dragons, "Dragons")
-        write_team_info(Raptors, "Raptors")
+        write_team_info(team_dict)
+    write_welcome_letter(team_dict)
 
 
 if __name__ == "__main__":

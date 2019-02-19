@@ -1,24 +1,24 @@
 Team Sharks
-Joe Smith, YES, Jim and Jan Smith
-Jill Tanner, YES, Clara Tanner
-Bill Bon, YES, Sara and Jenny Bon
-Eva Gordon, NO, Wendy and Mike Gordon
-Matt Gill, NO, Charles and Sylvia Gill
-Kimmy Stein, NO, Bill and Hillary Stein
+Phillip Helm, YES, Thomas Helm and Eva Jones
+Herschel Krustofski, YES, Hyman and Rachel Krustofski
+Suzane Greenberg, YES, Henrietta Dumas
+Chloe Alaska, NO, David and Jamie Alaska
+Sammy Adams, NO, Jeff Adams
+Ben Finkelstein, NO, Aaron and Jill Finkelstein
 
 Team Dragons
-Karl Saygan, YES, Heather Bledsoe
-Suzane Greenberg, YES, Henrietta Dumas
-Diego Soto, YES, Robin and Sarika Soto
-Sammy Adams, NO, Jeff Adams
+Les Clay, YES, Wynonna Brown
+Bill Bon, YES, Sara and Jenny Bon
+Jill Tanner, YES, Clara Tanner
+Kimmy Stein, NO, Bill and Hillary Stein
 Sal Dali, NO, Gala Dali
-Joe Kavalier, NO, Sam and Elaine Kavalier
+Eva Gordon, NO, Wendy and Mike Gordon
 
 Team Raptors
-Herschel Krustofski, YES, Hyman and Rachel Krustofski
-Les Clay, YES, Wynonna Brown
-Phillip Helm, YES, Thomas Helm and Eva Jones
+Karl Saygan, YES, Heather Bledsoe
+Diego Soto, YES, Robin and Sarika Soto
+Joe Smith, YES, Jim and Jan Smith
+Joe Kavalier, NO, Sam and Elaine Kavalier
 Arnold Willis, NO, Claire Willis
-Chloe Alaska, NO, David and Jamie Alaska
-Ben Finkelstein, NO, Aaron and Jill Finkelstein
+Matt Gill, NO, Charles and Sylvia Gill
 
