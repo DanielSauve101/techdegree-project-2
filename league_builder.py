@@ -44,15 +44,20 @@ def sort_players_by_experience(player_info, type_of_player):
 
 def create_teams(teams, experienced_players, beginner_players):
     # This function is used to generate random players from both beginner_players
-    # and experienced_players lists. Which then seperates then into equal teams
-    # as a dictionary using the team as the key and list of equal players as the value.
-    number_of_teams = len(teams)
+    # and experienced_players lists. Which then seperates them into equal teams
+    # as a dictionary using the team as the key and a list of equal players as the value.
+    players_per_team = (len(experienced_players) + len(beginner_players)) // len(teams)
+    type_of_players_per_team = players_per_team // 2
     team_dict = {}
-
+    # The for team in teams for loop uses the random.sample to add equal amounts of experienced_players
+    # and beginner_players to a new list called list_of_random_players and then adds it into the
+    # team_dict dictionary.
     for team in teams:
         list_of_random_players = random.sample(
-            experienced_players, number_of_teams) + random.sample(beginner_players, number_of_teams)
+            experienced_players, type_of_players_per_team) + random.sample(beginner_players, type_of_players_per_team)
         team_dict.update({team: list_of_random_players})
+        # The below for loop is to remove the newly added players from the experienced_players or
+        # beginner_players list so when we loop back to the for team in teams loop the players won't be duplicated.
         for player in list_of_random_players:
             if player in experienced_players:
                 experienced_players.remove(player)
